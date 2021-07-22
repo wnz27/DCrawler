@@ -49,7 +49,7 @@ func TestParseProfile2(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	result := ParseProfile2(contents, "安静的雪", "女")
+	result := ParseProfile2(contents, "安静的雪")
 	if len(result.Items) != 1 {
 		t.Errorf("Result should contain 1 element; but was %v", result.Items)
 	}
@@ -61,7 +61,7 @@ func TestParseProfile2(t *testing.T) {
 		Height:     "168cm",
 		Weight:     "65kg",
 		Income:     "月收入:3-5千",
-		Gender:     "女",
+		//Gender:     "女",
 		Name:       "安静的雪",
 		Xingzuo:     "天秤座(09.23-10.22)",
 		Occupation: "生产领班",

@@ -6,20 +6,20 @@
  **/
 package model
 
-//type Profile3 struct {
-//	Name     string
-//	Gender   string
-//	Age      int
-//	Marriage string
-//	Hukou    string // 居住地
-//	Income   string // 月收入
-//	Height   int
-//}
+type Profile3 struct {
+	Name     string
+	Gender   string
+	Age      int
+	Marriage string
+	Hukou    string // 居住地
+	Income   string // 月收入
+	Height   int
+}
 
 // 页面修改后的解析办法
 type Profile2 struct {
 	Name     string
-	Gender   string
+	//Gender   string
 	Age      string
 	Marriage string
 	Hukou    string // 工作地

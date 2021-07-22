@@ -102,12 +102,12 @@ const originStr = `<div class="m-btn purple" data-v-8b1eac0c>([^<]+)</div>`
 // 婚姻 年龄 星座 身高 体重 工作地 收入 职业 学历
 // 0  1     2    3    4   5    6    7   8
 
-func ParseProfile2(contents []byte, name string, gender string) engine.ParseResult {
+func ParseProfile2(contents []byte, name string) engine.ParseResult {
 	re := regexp.MustCompile(originStr)
 	matches := re.FindAllSubmatch(contents, -1)
 	profile := model.Profile2{}
 	profile.Name = name
-	profile.Gender = gender
+	//profile.Gender = gender
 	l := len(matches)
 	for i := 0; i < l; i++ {
 		m := matches[i]

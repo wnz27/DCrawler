@@ -35,5 +35,6 @@ QPS限制！！！
 单任务版 --> 并发版  --> 分布式版
 
 #### todo 
-- [X] 用户信息页面改版 爬取解析方式待更新 [页面改版为](zhenai/parser/profile_test_data2.html)
+- [X] 用户信息页面改版 爬取解析方式待更新 [页面改版为](zhenai/parser/profile_test_data2.html) 现在网页不让爬
+- [ ] 直接从城市底下的用户列表拿基本信息
 

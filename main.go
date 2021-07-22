@@ -16,5 +16,14 @@ func main() {
 		Url: "http://www.zhenai.com/zhenghun",
 		ParserFunc: parser.ParseCityList,
 	})
+
+	// debug
+	//contents, err := fetcher.Fetch("http://album.zhenai.com/u/1396998601")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//res := parser.ParseProfile2(contents, "TEST")
+	//fmt.Printf("-->%s", res.Items)
+
 }
 
