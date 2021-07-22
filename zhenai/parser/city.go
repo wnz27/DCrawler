@@ -24,7 +24,10 @@ func ParseCity(contents []byte) engine.ParseResult {
 		result.Requests = append(result.Requests,
 			engine.Request{
 				Url: string(m[1]),
-				ParserFunc: engine.NilParser,
+				// 函数式编程，闭包的使用
+				ParserFunc: func(c []byte) engine.ParseResult {
+					return ParseProfile(c, string(m[2]))
+				},
 			})
 	}
 	return result
