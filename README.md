@@ -33,3 +33,7 @@ QPS限制！！！
 输出：Request{url, 对应parser}列表，item 列表
 #### 实现步骤
 单任务版 --> 并发版  --> 分布式版
+
+#### todo 
+- [X] 用户信息页面改版 爬取解析方式待更新 [页面改版为](zhenai/parser/profile_test_data2.html)
+

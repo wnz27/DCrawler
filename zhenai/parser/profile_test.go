@@ -43,3 +43,33 @@ func TestParseProfile(t *testing.T) {
 		t.Errorf("expected %v; but got %v", expected, profile)
 	}
 }
+
+func TestParseProfile2(t *testing.T) {
+	contents, err := ioutil.ReadFile("profile_test_data2.html")
+	if err != nil {
+		panic(err)
+	}
+	result := ParseProfile2(contents, "安静的雪", "女")
+	if len(result.Items) != 1 {
+		t.Errorf("Result should contain 1 element; but was %v", result.Items)
+	}
+	profile := result.Items[0].(model.Profile2)
+	profile.Name = "安静的雪"
+
+	expected := model.Profile2{
+		Age:        "31岁",
+		Height:     "168cm",
+		Weight:     "65kg",
+		Income:     "月收入:3-5千",
+		Gender:     "女",
+		Name:       "安静的雪",
+		Xingzuo:     "天秤座(09.23-10.22)",
+		Occupation: "生产领班",
+		Marriage:   "未婚",
+		Hukou:      "工作地:阿坝小金",
+		Education:  "中专",
+	}
+	if profile != expected {
+		t.Errorf("expected %v; but got %v", expected, profile)
+	}
+}

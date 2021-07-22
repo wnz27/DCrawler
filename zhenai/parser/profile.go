@@ -42,7 +42,6 @@ var guessRe = regexp.MustCompile(
 var idUrlRe = regexp.MustCompile(
 	`.*album\.zhenai\.com/u/([\d]+)`)
 
-
 func ParseProfile(contents []byte, name string) engine.ParseResult {
 	profile := model.Profile{}
 	profile.Name = name
@@ -97,4 +96,52 @@ func extractString(contents []byte, re *regexp.Regexp) string {
 		return ""
 	}
 }
+const originStr = `<div class="m-btn purple" data-v-8b1eac0c>([^<]+)</div>`
 
+// 匹配的顺序为  未婚 31岁  天秤座(09.23-10.22) 168cm 65kg 工作地:阿坝小金 月收入:3-5千 生产领班 中专
+// 婚姻 年龄 星座 身高 体重 工作地 收入 职业 学历
+// 0  1     2    3    4   5    6    7   8
+
+func ParseProfile2(contents []byte, name string, gender string) engine.ParseResult {
+	re := regexp.MustCompile(originStr)
+	matches := re.FindAllSubmatch(contents, -1)
+	profile := model.Profile2{}
+	profile.Name = name
+	profile.Gender = gender
+	l := len(matches)
+	for i := 0; i < l; i++ {
+		m := matches[i]
+		if i == 0 {
+			profile.Marriage = string(m[1])
+		}
+		if i == 1 {
+			profile.Age = string(m[1])
+		}
+		if i == 2 {
+			profile.Xingzuo = string(m[1])
+		}
+		if i == 3 {
+			profile.Height = string(m[1])
+		}
+		if i == 4 {
+			profile.Weight = string(m[1])
+		}
+		if i == 5 {
+			profile.Hukou = string(m[1])
+		}
+		if i == 6 {
+			profile.Income = string(m[1])
+		}
+		if i == 7 {
+			profile.Occupation = string(m[1])
+		}
+		if i == 8 {
+			profile.Education = string(m[1])
+		}
+
+	}
+	result := engine.ParseResult{
+		Items: []interface{}{profile},
+	}
+	return result
+}
